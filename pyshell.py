@@ -5,7 +5,7 @@ A tiny, fast, cross-platform shell with pyfetch integration.
 
 Built-in commands:
   pyshell --version, pyshell quit, pyshell config
-  ls, cd, pwd, pyfetch, time, clear, help, cat, echo, whoami, hostname, rps, matrix
+  ls, cd, pwd, time, clear, help, cat, echo, whoami, hostname, rps, matrix
 
 pyfetch supports full args: pyfetch --image ./logo.png --logo arch --no-color
 Config: pyfetch_config.json (same as pyfetch)
@@ -56,7 +56,7 @@ BR_WHITE = "\033[97m"
 YELLOW = "\033[33m"
 CYAN = "\033[36m"
 
-VERSION = "0.3.0-alpha"
+VERSION = "0.3.3-alpha"
 CMD_LIST = (
     "pyshell --version  # Shows current version",
     "pyshell quit       # Quits pyshell",
@@ -64,7 +64,6 @@ CMD_LIST = (
     "ls [path]          # List directory",
     "cd [path]          # Change directory (no args -> ~ on Linux, C:\\ on Windows; supports ~, -, /home/$USER)",
     "pwd                # Show current directory",
-    "pyfetch [args]     # pyfetch system info (supports --image, --logo, --no-color)",
     "time               # Show time and date",
     "clear              # Clear screen",
     "cat <file>         # Show file",
