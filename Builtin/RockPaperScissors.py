@@ -1,7 +1,14 @@
 import random
 def rock_paper_scissors():
     choices = ["rock", "paper", "scissors"]
-    user_choice = input("> Rock, paper or scissors? > ").lower()
+    try:
+        user_choice = input("> Rock, paper or scissors? (type 'quit' to exit) > ").lower().strip()
+    except (EOFError, KeyboardInterrupt):
+        print("\n> Exiting RPS...")
+        raise
+    if user_choice in ("quit", "exit", "q", "back", "leave", "stop", "end"):
+        print("> Exiting RPS... bye!")
+        raise SystemExit
     computer_choice = random.choice(choices)
     if user_choice not in choices:
         print("> Invalid choice buddy!, please choose rock, paper or scissors.")
@@ -24,8 +31,10 @@ def rock_paper_scissors():
         else:
             print("> Rock smashes scissors! You lose.")
     return computer_choice, user_choice
-try:
-    while True:
-        rock_paper_scissors()
-except KeyboardInterrupt:
-    print("\nExiting..")
+
+if __name__ == "__main__":
+    try:
+        while True:
+            rock_paper_scissors()
+    except (KeyboardInterrupt, EOFError, SystemExit):
+        print("\nExiting..")

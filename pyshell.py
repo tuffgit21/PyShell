@@ -1814,8 +1814,42 @@ def _dispatch_single(line: str, stdin_data: str | None = None) -> bool | None:
         _last_exit_code = 0
     elif cmd == "rps":
         try:
-            from .Builtin import RockPaperScissors
-            RockPaperScissors.rock_paper_scissors()
+            # Robust import: works when run as `python pyshell.py` (no parent package)
+            # and when run as module. Also avoids executing top-level loop in
+            # RockPaperScissors.py by ensuring that file is guarded with
+            # `if __name__ == "__main__":`.
+            RockPaperScissors = None
+            try:
+                from Builtin import RockPaperScissors as _rps_mod
+                RockPaperScissors = _rps_mod
+            except ImportError:
+                try:
+                    from .Builtin import RockPaperScissors as _rps_mod  # type: ignore
+                    RockPaperScissors = _rps_mod
+                except ImportError:
+                    # Fallback: load directly from file next to pyshell.py
+                    import importlib.util
+
+                    rps_path = Path(__file__).parent / "Builtin" / "RockPaperScissors.py"
+                    spec = importlib.util.spec_from_file_location(
+                        "Builtin.RockPaperScissors", rps_path
+                    )
+                    if spec is None or spec.loader is None:
+                        raise ImportError(f"cannot load {rps_path}")
+                    _mod = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(_mod)
+                    RockPaperScissors = _mod
+            # Infinite play until player exits (quit/exit/q or Ctrl+C/EOF)
+            print(f"{DIM}RPS started — type rock/paper/scissors, 'quit' to exit{R}")
+            while True:
+                try:
+                    RockPaperScissors.rock_paper_scissors()
+                except SystemExit:
+                    # quit/exit command
+                    break
+                except (KeyboardInterrupt, EOFError):
+                    print(f"\n{DIM}RPS exited{R}")
+                    break
             _last_exit_code = 0
         except Exception as e:
             print(f"{BR_RED}rps: {e}{R}")

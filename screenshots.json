@@ -1,0 +1,30 @@
+[
+  {
+    "src": "screenshots/screenshot-1.png",
+    "alt": "PyShell main terminal interface",
+    "title": "Main Terminal",
+    "icon": ">_",
+    "caption": "Main terminal — clean prompt and built-in commands"
+  },
+  {
+    "src": "screenshots/screenshot-2.png",
+    "alt": "PyShell running Builtin tools",
+    "title": "Builtin Tools",
+    "icon": "◯",
+    "caption": "Builtin tools — RockPaperScissors and more"
+  },
+  {
+    "src": "screenshots/screenshot-3.png",
+    "alt": "PyShell on Linux",
+    "title": "Cross-Platform",
+    "icon": "▶",
+    "caption": "Cross-platform — Windows & Debian/Ubuntu"
+  },
+  {
+    "src": "screenshots/screenshot-4.png",
+    "alt": "Directory in PyShell",
+    "title": "Bash tools",
+    "icon": "▶",
+    "caption": "Using mkdir, cp, touch, ls"
+  }
+]
