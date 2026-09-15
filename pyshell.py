@@ -86,7 +86,7 @@ POWERLINE_RIGHT_THIN = ""
 POWERLINE_LEFT = ""
 POWERLINE_LEFT_THIN = ""
 
-VERSION = "0.9.3-alpha"
+VERSION = "1.0.0"
 
 # ---------------------------------------------------------------------------
 # Themes — presets + custom overrides

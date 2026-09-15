@@ -1,5 +1,5 @@
 // Single source of truth for PyShell version — used by index.html & pyshell_help.html
-const PYSHELL_VERSION = "0.9.3-alpha";
+const PYSHELL_VERSION = "1.0.0";
 if (typeof window !== "undefined") window.PYSHELL_VERSION = PYSHELL_VERSION;
 
 document.addEventListener("DOMContentLoaded", async () => {
