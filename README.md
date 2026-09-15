@@ -4,7 +4,7 @@
 
 ![PyShell](screenshots/screenshot-1.png)
 
-**v0.9.3-alpha** · 24 built-ins · 13 themes (10 classic + 3 p10k) · 11 prompt presets + custom · pipes `|` · redirections `> >>` · chaining `; && ||` · history · startup commands
+**v1.0.0** · 24 built-ins · 13 themes (10 classic + 3 p10k) · 11 prompt presets + custom · pipes `|` · redirections `> >>` · chaining `; && ||` · history · startup commands
 
 ---
 
