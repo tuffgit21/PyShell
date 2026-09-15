@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PyShell — Help & Commands</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&family=JetBrains+Mono:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body class="help-page">
+    <header class="hdiv">
+      <a class="hp" href="./index.html">PyShell</a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="main-navigation"
+      >
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+      <nav class="hnav" id="main-navigation">
+        <a class="hbutton" href="https://tuffgit21.github.io/PyShell/">← Back to site</a>
+        <a class="hbutton active" href="#top"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-question-mark"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>Help</a>
+        <a class="hbutton" href="https://tuffgit21.github.io/PyShell/" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>Docs ↗</a>
+      </nav>
+    </header>
+
+    <main class="main-content" id="top">
+      <!-- Hero -->
+      <section class="help-hero">
+        <p class="eyebrow">PYSHELL <span data-pyshell-version data-pyshell-version-prefix="v">v0.3.3-alpha</span> • TERMINAL HELP</p>
+        <h1><span>>_</span> PyShell commands</h1>
+        <p class="intro-text">
+          Fast, Python-powered shell — native on Windows, Linux & macOS. 24 cross-platform built-ins with powerlevel10k themes + format presets, pipes, redirections, and history. Unix-only tools removed — here’s everything that works everywhere.
+        </p>
+        <div class="hero-meta">
+          <span class="meta-pill dot">24 commands</span>
+          <span class="meta-pill">Pipes <strong>|</strong> Redirections <strong>&gt; &gt;&gt;</strong> Chaining <strong>;&amp;&amp;||</strong></span>
+          <span class="meta-pill">Type <strong>help</strong> inside PyShell</span>
+        </div>
+        <label class="search-wrap" aria-label="Search commands">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l4 4"/></svg>
+          <input id="cmd-search" type="search" placeholder="Search commands, flags, or description — try &quot;copy&quot; or &quot;-r&quot;" autocomplete="off" />
+          <kbd>/</kbd>
+        </label>
+      </section>
+
+      <div class="stats">
+        <div class="stat"><strong>24</strong><span>CROSS-PLATFORM COMMANDS</span></div>
+        <div class="stat"><strong>100%</strong><span>WINDOWS • LINUX • MACOS</span></div>
+        <div class="stat"><strong>2</strong><span>FUN BUILT-INS (rps, world)</span></div>
+      </div>
+
+      <!-- Core — themes + format presets like powerlevel10k -->
+      <section class="category" data-category>
+        <div class="category-head">
+          <h2><span class="cat-icon">◈</span> PyShell core</h2>
+          <p>Meta commands — themes like powerlevel10k, format presets, config, version</p>
+          <span class="count">11 commands</span>
+        </div>
+        <div class="command-grid">
+          <article class="command-card" data-search="pyshell --version version shows current">
+            <div class="cmd-top"><span class="cmd-name">pyshell --version</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy command" onclick="copyCmd(this,'pyshell --version')">⧉</button></div></div>
+            <p class="cmd-desc">Shows current PyShell version, Python version and host info.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>pyshell --version</code></div>
+          </article>
+          <article class="command-card" data-search="pyshell quit exit q quits shell">
+            <div class="cmd-top"><span class="cmd-name">pyshell quit</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy command" onclick="copyCmd(this,'pyshell quit')">⧉</button></div></div>
+            <p class="cmd-desc">Quits PyShell cleanly. Aliases: <code>quit</code>, <code>exit</code>, <code>q</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>pyshell quit</code></div>
+          </article>
+          <article class="command-card" data-search="pyshell config cfg config open">
+            <div class="cmd-top"><span class="cmd-name">pyshell config</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy command" onclick="copyCmd(this,'pyshell config')">⧉</button></div></div>
+            <p class="cmd-desc">Opens <code>pyshell_config.json</code> in your default editor (or prints its path).</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>pyshell config</code></div>
+          </article>
+          <article class="command-card" data-search="pyshell --refresh -r refresh reload ref source config manual edit">
+            <div class="cmd-top"><span class="cmd-name">pyshell --refresh / -r</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy command" onclick="copyCmd(this,'pyshell --refresh')">⧉</button></div></div>
+            <p class="cmd-desc">Reloads <code>pyshell_config.json</code> after manual edit — like <code>source</code> for config. Syncs <code>preset</code>→<code>format</code> & <code>theme</code>→<code>banner_color</code>. Aliases: <code>pyshell refresh</code>, <code>refresh</code>, <code>ref</code>, <code>reload</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>pyshell --refresh</code></div>
+            <div class="cmd-flags"><span class="flag"><strong>pyshell -r</strong></span><span class="flag"><strong>ref</strong></span><span class="flag"><strong>refresh</strong></span></div>
+          </article>
+          <article class="command-card" data-search="help ? h show help">
+            <div class="cmd-top"><span class="cmd-name">help</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy command" onclick="copyCmd(this,'help')">⧉</button></div></div>
+            <p class="cmd-desc">Shows this help listing. Aliases: <code>?</code>, <code>h</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>help</code></div>
+          </article>
+          <article class="command-card" data-search="history show command history">
+            <div class="cmd-top"><span class="cmd-name">history</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy command" onclick="copyCmd(this,'history')">⧉</button></div></div>
+            <p class="cmd-desc">Shows last 100 commands from <code>~/.pyshell_history</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>history</code></div>
+          </article>
+          <article class="command-card" data-search="theme list set preview pyshell theme dark dracula nord monokai solarized matrix ocean sunset neon light p10k">
+            <div class="cmd-top"><span class="cmd-name">theme [list|set|preview]</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'theme list')">⧉</button></div></div>
+            <p class="cmd-desc">Manage themes — 13 presets: <code>dark</code>, <code>light</code>, <code>dracula</code>, <code>nord</code>, <code>monokai</code>, <code>solarized</code>, <code>matrix</code>, <code>ocean</code>, <code>sunset</code>, <code>neon</code>, <code>p10k</code>, <code>p10k_lean</code>, <code>p10k_rainbow</code> — powerlevel10k-like. Custom via <code>appearance.custom_colors</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>theme list</code></div>
+            <div class="cmd-flags"><span class="flag"><strong>theme set</strong> dracula</span><span class="flag"><strong>theme set</strong> p10k</span><span class="flag"><strong>theme preview</strong> p10k_rainbow</span></div>
+          </article>
+          <article class="command-card" data-search="pyshell theme list set preview config appearance banner color">
+            <div class="cmd-top"><span class="cmd-name">pyshell theme [list|set]</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'pyshell theme set dracula')">⧉</button></div></div>
+            <p class="cmd-desc">Same as <code>theme</code> but via <code>pyshell</code> prefix. Persists to <code>pyshell_config.json</code> (<code>appearance.theme</code> + <code>banner_color</code>).</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>pyshell theme set p10k</code></div>
+          </article>
+          <article class="command-card" data-search="p10k configure powerlevel10k wizard theme classic lean rainbow icons nerd font">
+            <div class="cmd-top"><span class="cmd-name">p10k configure</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'p10k configure')">⧉</button></div></div>
+            <p class="cmd-desc">Powerlevel10k wizard — like <code>p10k configure</code>. Asks powerline, style (<code>classic</code>/<code>lean</code>/<code>rainbow</code>), icons, then sets <code>p10k</code> family. Aliases: <code>p10k</code>, <code>powerlevel10k</code>, <code>theme configure</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>p10k configure</code></div>
+            <div class="cmd-flags"><span class="flag"><strong>p10k</strong> — wizard</span><span class="flag"><strong>theme</strong> set p10k_lean</span></div>
+          </article>
+          <article class="command-card" data-search="format prompt list set preview classic pure minimal two-line git nerd compact full p10k powerline placeholders">
+            <div class="cmd-top"><span class="cmd-name">format [list|set|preview]</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'format list')">⧉</button></div></div>
+            <p class="cmd-desc">Prompt format presets — <code>classic</code> (<code>{user}@{host} {cwd} $&gt;</code>), <code>pure</code> (<code>{cwd} ❯</code>), <code>minimal</code>, <code>two-line</code>, <code>git</code>, <code>nerd</code>, <code>compact</code>, <code>full</code>, <code>p10k</code> (<code>{p10k}</code>), <code>powerline</code>. Placeholders: <code>{user}</code> <code>{host}</code> <code>{cwd}</code> <code>{git}</code> <code>{p10k}</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>format set pure</code></div>
+            <div class="cmd-flags"><span class="flag"><strong>format preview</strong> pure</span><span class="flag"><strong>format set</strong> two-line</span><span class="flag"><strong>prompt</strong> alias</span></div>
+          </article>
+          <article class="command-card" data-search="prompt format pyshell prompt format classic pure p10k git_branch">
+            <div class="cmd-top"><span class="cmd-name">prompt / pyshell prompt</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'prompt set nerd')">⧉</button></div></div>
+            <p class="cmd-desc">Aliases for <code>format</code>. <code>prompt</code>, <code>pyshell prompt</code>, <code>pyshell format</code> all manage <code>prompt.format</code> + <code>git_branch</code>. Custom: <code>format set "{user}@{host} {cwd} $&gt; "</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>prompt set nerd</code></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Navigation -->
+      <section class="category" data-category>
+        <div class="category-head">
+          <h2><span class="cat-icon">⬢</span> Navigation & system</h2>
+          <p>Move around and inspect the system — works on Windows, Linux & macOS</p>
+          <span class="count">7 commands</span>
+        </div>
+        <div class="command-grid">
+          <article class="command-card" data-search="ls list directory path">
+            <div class="cmd-top"><span class="cmd-name">ls [path]</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'ls')">⧉</button></div></div>
+            <p class="cmd-desc">List directory contents. Colors dirs in cyan, executables in green. Supports <code>~</code>, <code>-</code>, and quoted paths.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>ls ~/Documents</code></div>
+            <div class="cmd-flags"><span class="flag"><strong>ls</strong> .</span><span class="flag"><strong>ls</strong> "My Folder"</span></div>
+          </article>
+          <article class="command-card" data-search="cd change directory home ~ -">
+            <div class="cmd-top"><span class="cmd-name">cd [path]</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'cd ~')">⧉</button></div></div>
+            <p class="cmd-desc">Change directory. No args → home (<code>~</code> on Linux, <code>C:\</code> on Windows). Supports <code>~</code>, <code>-</code>, and <code>/home/$USER</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>cd ~/Projects</code></div>
+            <div class="cmd-flags"><span class="flag"><strong>cd</strong></span><span class="flag"><strong>cd</strong> -</span><span class="flag"><strong>cd</strong> ~</span></div>
+          </article>
+          <article class="command-card" data-search="pwd show current directory print working">
+            <div class="cmd-top"><span class="cmd-name">pwd</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'pwd')">⧉</button></div></div>
+            <p class="cmd-desc">Print working directory.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>pwd</code></div>
+          </article>
+          <article class="command-card" data-search="clear cls clear screen">
+            <div class="cmd-top"><span class="cmd-name">clear</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'clear')">⧉</button></div></div>
+            <p class="cmd-desc">Clear the terminal screen. Alias: <code>cls</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>clear</code></div>
+          </article>
+          <article class="command-card" data-search="time date show clock timezone">
+            <div class="cmd-top"><span class="cmd-name">time</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'time')">⧉</button></div></div>
+            <p class="cmd-desc">Show current time, date, weekday and timezone.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>time</code></div>
+          </article>
+          <article class="command-card" data-search="whoami show user getpass">
+            <div class="cmd-top"><span class="cmd-name">whoami</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'whoami')">⧉</button></div></div>
+            <p class="cmd-desc">Print current logged-in user.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>whoami</code></div>
+          </article>
+          <article class="command-card" data-search="hostname show computer name">
+            <div class="cmd-top"><span class="cmd-name">hostname</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'hostname')">⧉</button></div></div>
+            <p class="cmd-desc">Print system hostname.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>hostname</code></div>
+          </article>
+          <!-- Unix-replicating: env/export/unset/source kept in CMD_LIST but hidden from help (available via terminal `help`) -->
+        </div>
+      </section>
+
+      <!-- File Operations (cross-platform subset; Unix-only cp/mv/rm/touch/grep kept in CMD_LIST but hidden here) -->
+      <section class="category" data-category>
+        <div class="category-head">
+          <h2><span class="cat-icon">◆</span> File operations</h2>
+          <p>Cross-platform tools — pipes & redirections fully supported</p>
+          <span class="count">4 commands</span>
+        </div>
+        <div class="command-grid">
+          <article class="command-card" data-search="cat show file piped stdin |">
+            <div class="cmd-top"><span class="cmd-name">cat &lt;file&gt;</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'cat README.md')">⧉</button></div></div>
+            <p class="cmd-desc">Show file contents. Works with pipes: <code>cat file | grep pat</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>cat notes.txt</code></div>
+          </article>
+          <article class="command-card" data-search="echo print text -n -e -E escapes newline backslash">
+            <div class="cmd-top"><span class="cmd-name">echo [-neE] [text]</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'echo &quot;hello&quot;')">⧉</button></div></div>
+            <p class="cmd-desc">GNU <code>echo</code>. Use <code>""</code> to print. Supports <code>\n \t \\ \xHH \0NNN</code> with <code>-e</code>. Redirections: <code>&gt; &gt;&gt;</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>echo -e "line1\nline2"</code></div>
+            <div class="cmd-flags"><span class="flag"><strong>-n</strong> no newline</span><span class="flag"><strong>-e</strong> escapes</span><span class="flag"><strong>-E</strong> no escapes</span><span class="flag"><strong>--</strong> end opts</span></div>
+          </article>
+          <!-- Unix-replicating cp/mv kept in CMD_LIST but hidden from help -->
+          <article class="command-card" data-search="mkdir make directory -p -v parents">
+            <div class="cmd-top"><span class="cmd-name">mkdir [-pv] &lt;dir&gt;</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'mkdir -p a/b/c')">⧉</button></div></div>
+            <p class="cmd-desc">Create directory. <code>-p</code> creates parents, <code>-v</code> prints creation.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>mkdir -p projects/demo</code></div>
+            <div class="cmd-flags"><span class="flag"><strong>-p</strong> parents</span><span class="flag"><strong>-v</strong> verbose</span></div>
+          </article>
+          <!-- Unix-replicating rm kept in CMD_LIST but hidden from help -->
+          <article class="command-card" data-search="rmdir remove empty directory">
+            <div class="cmd-top"><span class="cmd-name">rmdir &lt;dir&gt;</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'rmdir empty_dir')">⧉</button></div></div>
+            <p class="cmd-desc">Remove <em>empty</em> directory only. For non-empty use <code>rm -r</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>rmdir empty_dir</code></div>
+          </article>
+          <!-- Unix-replicating touch/grep kept in CMD_LIST but hidden from help -->
+        </div>
+      </section>
+
+      <!-- Fun -->
+      <section class="category" data-category>
+        <div class="category-head">
+          <h2><span class="cat-icon">★</span> Fun & extras</h2>
+          <p>Built-ins for when you’re bored</p>
+          <span class="count">2 commands</span>
+        </div>
+        <div class="command-grid">
+          <article class="command-card" data-search="rps rock paper scissors game builtin">
+            <div class="cmd-top"><span class="cmd-name">rps</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'rps')">⧉</button></div></div>
+            <p class="cmd-desc">Play Rock Paper Scissors against PyShell. Runs until you type <code>quit</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>rps</code></div>
+          </article>
+          <article class="command-card" data-search="world openworld cli-open-world ow adventure wasd arrows game builtin map save load unlock">
+            <div class="cmd-top"><span class="cmd-name">world</span><div class="cmd-actions"><button class="icon-btn" aria-label="Copy" onclick="copyCmd(this,'world')">⧉</button></div></div>
+            <p class="cmd-desc">CLI Open World — 6 maps unlock by LVL: <code>plains</code>0 8×6, <code>desert</code>1 12×7, <code>islands</code>2 14×6, <code>forest</code>3 10×10, <code>mountain</code>4 9×8, <code>dungeon</code>5 6×6. Auto-saves to <code>world_save.dat</code> (encoded, hidden, game-only) on <code>Q</code>. Controls <code>WASD</code>/arrows (fixed right arrow), <code>J</code> stats, <code>L</code> look, <code>M</code> maps, <code>N</code>/<code>P</code> next/prev, <code>1-6</code> travel, <code>Q</code> quit. Edge walk → <code>N</code> prompt. Aliases: <code>openworld</code>, <code>cli-open-world</code>, <code>ow</code>.</p>
+            <div class="cmd-example"><span class="prompt">$</span> <code>world --map desert</code></div>
+            <div class="cmd-flags"><span class="flag"><strong>world --list-maps</strong></span><span class="flag"><strong>world --map forest</strong></span><span class="flag"><strong>world --stats</strong></span><span class="flag"><strong>M maps</strong></span><span class="flag"><strong>N/P travel</strong></span></div>
+          </article>
+        </div>
+      </section>
+
+      <div id="no-results" class="no-results">
+        <p style="margin:0 0 6px; font-weight:700; color: var(--text);">No commands found</p>
+        <p style="margin:0; font-size:13px;">Try a different term — e.g. <code style="font-family:var(--mono); background:#0a0a0a; border:1px solid var(--border); padding:2px 6px; border-radius:6px;">cp</code> or <code style="font-family:var(--mono); background:#0a0a0a; border:1px solid var(--border); padding:2px 6px; border-radius:6px;">grep</code></p>
+      </div>
+
+      <section class="terminal-tip">
+        <div class="tip-icon">💡</div>
+        <div>
+          <h3>Real <code>.sh</code> power — themes, chaining, pipes & redirections</h3>
+          <p>
+            Try <code>theme list</code>, <code>theme set dracula</code>, <code>theme preview nord</code>, <code>pyshell --refresh</code>/<code>ref</code> after editing <code>pyshell_config.json</code>. Shell: <code>ls | grep py &gt; out.txt</code>, <code>echo "hi" &gt;&gt; log</code>, <code>VAR=hello echo $VAR</code>,
+            <code>cat file | grep TODO -n</code>, <code>cmd &amp;&amp; echo ok || echo fail</code> and <code>source script.sh</code>. Use <code>$? $$ $HOME ${VAR:-default}</code> and globs like <code>*.py</code>.
+          </p>
+        </div>
+      </section>
+
+      <p class="footer">
+        Made by <strong>tuffgit21</strong> •
+        <a href="https://tuffgit21.github.io/PyShell/" target="_blank" rel="noopener">PyShell site</a> •
+        <a href="https://tuffgit21.github.io/" target="_blank" rel="noopener">Main site</a> •
+        <span data-pyshell-version data-pyshell-version-prefix="v">v0.3.3-alpha</span>
+      </p>
+    </main>
+
+    <script>
+      const input = document.getElementById('cmd-search');
+      const cards = [...document.querySelectorAll('.command-card')];
+      const categories = [...document.querySelectorAll('[data-category]')];
+      const noResults = document.getElementById('no-results');
+
+      function filter(q) {
+        const query = q.trim().toLowerCase();
+        let visibleCount = 0;
+        cards.forEach(c => {
+          const hay = (c.dataset.search + ' ' + c.textContent).toLowerCase();
+          const show = !query || hay.includes(query);
+          c.classList.toggle('hidden', !show);
+          if (show) visibleCount++;
+        });
+        categories.forEach(cat => {
+          const hasVisible = [...cat.querySelectorAll('.command-card')].some(card => !card.classList.contains('hidden'));
+          cat.style.display = hasVisible ? '' : 'none';
+          const countEl = cat.querySelector('.count');
+          if (countEl && hasVisible) {
+            const n = [...cat.querySelectorAll('.command-card')].filter(c => !c.classList.contains('hidden')).length;
+            const total = cat.querySelectorAll('.command-card').length;
+            countEl.textContent = query ? n + ' / ' + total : total + ' commands';
+          }
+        });
+        noResults.classList.toggle('visible', visibleCount === 0);
+      }
+
+      input.addEventListener('input', e => filter(e.target.value));
+      // keyboard shortcut: "/" to focus search, Esc to clear
+      document.addEventListener('keydown', e => {
+        if (e.key === '/' && document.activeElement !== input) {
+          e.preventDefault();
+          input.focus();
+        }
+        if (e.key === 'Escape' && document.activeElement === input) {
+          input.value = '';
+          filter('');
+          input.blur();
+        }
+      });
+
+      function copyCmd(btn, text) {
+        navigator.clipboard.writeText(text).then(() => {
+          btn.textContent = '✓';
+          btn.classList.add('copied');
+          setTimeout(() => { btn.textContent = '⧉'; btn.classList.remove('copied'); }, 1200);
+        }).catch(() => {
+          // fallback
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          btn.textContent = '✓';
+          setTimeout(() => btn.textContent = '⧉', 1200);
+        });
+      }
+    </script>
+  </body>
+</html>

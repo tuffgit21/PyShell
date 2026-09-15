@@ -1,0 +1,141 @@
+PyShell — Custom Themes
+======================
+File: pyshell.py:93 THEMES (13 built-in) + pyshell_config.json:22 appearance.custom_themes (user-defined)
+Config: pyshell_config.json appearance.theme + appearance.custom_themes.<name>
+Commands: theme list | theme set <name> | theme create <name> [base] | theme delete <name> | theme preview <name>
+Related: themes.txt (all presets), prompt_presets.txt (format presets)
+
+How to make your own theme:
+-----------------------------
+1. Create via command (copies base theme):
+   theme create mytheme dracula
+   theme create mycool p10k_rainbow
+   # base is optional, defaults to current theme (dark if not set)
+
+2. Edit the generated custom theme:
+   pyshell config
+   # opens pyshell_config.json in editor, find:
+   "appearance": {
+     "theme": "dark",
+     "custom_themes": {
+       "mytheme": {
+         "name": "Mytheme",
+         "description": "Custom — copied from dracula",
+         "banner": "bright_magenta",
+         "user": "bright_green",
+         "host": "bright_magenta",
+         "cwd": "dim",
+         "symbol": "bright_white",
+         "git": "bright_yellow",
+         "error": "bright_red",
+         "success": "bright_green"
+       }
+     }
+   }
+
+3. Activate:
+   theme set mytheme
+   theme preview mytheme
+
+4. Delete:
+   theme delete mytheme
+
+You can also edit directly without `theme create`:
+  Add to pyshell_config.json appearance.custom_themes.<name> manually, then theme set <name>.
+
+Valid colors (pyshell.py:70 COLOR_MAP):
+  reset, bold, dim,
+  black, red, green, yellow, blue, magenta, cyan, white,
+  bright_black, bright_red, bright_green, bright_yellow, bright_blue, bright_magenta, bright_cyan, bright_white,
+  bg_black, bg_red, bg_green, bg_yellow, bg_blue, bg_magenta, bg_cyan, bg_white,
+  bg_bright_black, bg_bright_red, bg_bright_green, bg_bright_yellow, bg_bright_blue, bg_bright_magenta, bg_bright_cyan, bg_bright_white
+
+Keys for a theme:
+  name, description,
+  banner, user, host, cwd, symbol, git, error, success  (color names above)
+  p10k (bool), style ("classic"|"lean"|"rainbow"), segments (for p10k only)
+
+Example 1: Simple custom (copy of dark, pink user)
+{
+  "mytheme": {
+    "name": "My Pink",
+    "description": "Dark with pink user",
+    "banner": "bright_cyan",
+    "user": "bright_magenta",
+    "host": "bright_cyan",
+    "cwd": "dim",
+    "symbol": "white",
+    "git": "bright_yellow",
+    "error": "bright_red",
+    "success": "bright_green"
+  }
+}
+Usage: theme create mypink dark  → edit custom_themes.mypink user to bright_magenta → theme set mypink
+
+Example 2: Powerlevel10k custom (copy p10k, change dir to yellow)
+{
+  "myp10k": {
+    "name": "My P10k",
+    "description": "p10k rainbow with yellow dir",
+    "banner": "bright_cyan",
+    "user": "bright_white",
+    "host": "bright_white",
+    "cwd": "bright_white",
+    "symbol": "bright_green",
+    "git": "bright_white",
+    "p10k": true,
+    "style": "classic",
+    "segments": {
+      "os": {"bg": "bg_bright_black", "fg": "bright_white", "icon": ""},
+      "context": {"bg": "bg_bright_black", "fg": "bright_yellow", "icon": ""},
+      "dir": {"bg": "bg_bright_yellow", "fg": "black", "icon": ""},
+      "vcs": {"bg": "bg_bright_green", "fg": "black", "icon": ""},
+      "status": {"bg": "bg_bright_black", "fg": "bright_red"}
+    }
+  }
+}
+Platform icons:  (Linux),  (Windows),  (macOS) — auto-selected in _render_p10k_prompt()
+Powerline: classic/rainbow use  (requires Nerd Font), lean uses 
+
+Example 3: Minimal custom (no p10k, just colors)
+{
+  "minimal_custom": {
+    "name": "Minimal",
+    "description": "Minimal — no banner",
+    "banner": "black",
+    "user": "white",
+    "host": "white",
+    "cwd": "white",
+    "symbol": "white",
+    "git": "white",
+    "error": "red",
+    "success": "green"
+  }
+}
+
+Quick custom via custom_colors (no new theme, just override current):
+  "appearance": {
+    "theme": "dark",
+    "custom_colors": {"user": "bright_magenta", "banner": "bright_yellow"}
+  }
+  → keeps dark but user is pink, banner yellow. Use when you only want 1-2 tweaks.
+
+Validation (pyshell.py:700):
+  - theme must be in THEMES or custom_themes, else warning: Invalid theme 'x': available dark, light, ...
+  - banner_color and custom_colors values must be in COLOR_MAP
+
+Current custom_themes in this repo (pyshell_config.json:22):
+  (none by default — {} — create with `theme create`)
+
+To see all (built-in + custom):
+  theme list
+  # shows ● current, 13 presets + N custom, with ⚡p10k and (custom) tags, and preview line
+
+To preview before activating:
+  theme preview mytheme
+  theme preview dracula
+  p10k configure  (wizard for p10k family)
+
+File generated: 2026-09-14
+Source: pyshell.py:93 THEMES, pyshell.py:70 COLOR_MAP, pyshell.py:2139 cmd_theme create
+See also: themes.txt, prompt_presets.txt, pyshell_help.html, help command

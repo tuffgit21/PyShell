@@ -1,4 +1,15 @@
+// Single source of truth for PyShell version — used by index.html & pyshell_help.html
+const PYSHELL_VERSION = "0.9.3-alpha";
+if (typeof window !== "undefined") window.PYSHELL_VERSION = PYSHELL_VERSION;
+
 document.addEventListener("DOMContentLoaded", async () => {
+  // Inject version into any element marked with [data-pyshell-version]
+  // Supports optional prefix: data-pyshell-version-prefix="v" or "PYSHELL v"
+  document.querySelectorAll("[data-pyshell-version]").forEach((el) => {
+    const prefix = el.getAttribute("data-pyshell-version-prefix") ?? "";
+    // If element already contains leading 'v' fallback, respect prefix; otherwise use plain version
+    el.textContent = prefix + PYSHELL_VERSION;
+  });
   // --- Load screenshots from screenshots.json (keeps manual HTML cards + adds JSON ones) ---
   try {
     const grid = document.querySelector(".screenshot-grid");

@@ -1,0 +1,121 @@
+PyShell — Theme Presets
+======================
+File: pyshell.py:93 THEMES (13 presets — 10 classic + 3 powerlevel10k)
+Config: pyshell_config.json:22 appearance.theme + appearance.banner_color + appearance.custom_colors
+Commands: theme list | theme set <name> | theme preview [name] | theme current | p10k configure | pyshell theme set <name>
+Colors: COLOR_MAP at pyshell.py:70 — reset, bold, dim, black, red, green, yellow, blue, magenta, cyan, white, bright_*, bg_*
+Custom: appearance.custom_colors = {"user":"bright_magenta","banner":"cyan", ...}
+
+1. dark
+   Name: Dark
+   Description: Default — cyan banner, green user, dim cwd
+   Colors: banner=bright_cyan, user=bright_green, host=bright_cyan, cwd=dim, symbol=white, git=bright_yellow, error=bright_red, success=bright_green
+   Example: [cyan banner] user@host ~/cwd $>
+   Usage: theme set dark
+
+2. light
+   Name: Light
+   Description: For light terminals — blue banner, muted tones
+   Colors: banner=blue, user=blue, host=magenta, cwd=black, symbol=black, git=yellow
+   Usage: theme set light
+
+3. dracula
+   Name: Dracula
+   Description: Purple/pink — popular Dracula palette
+   Colors: banner=bright_magenta, user=bright_green, host=bright_magenta, cwd=dim, symbol=bright_white, git=bright_yellow
+   Usage: theme set dracula
+
+4. nord
+   Name: Nord
+   Description: Arctic blues — Nord inspired
+   Colors: banner=bright_cyan, user=bright_blue, host=bright_white, cwd=cyan, symbol=white, git=bright_yellow
+   Usage: theme set nord
+
+5. monokai
+   Name: Monokai
+   Description: Warm — Monokai yellow/pink/green
+   Colors: banner=bright_yellow, user=bright_green, host=bright_magenta, cwd=yellow
+   Usage: theme set monokai
+
+6. solarized
+   Name: Solarized
+   Description: Solarized — yellow/cyan/blue
+   Colors: banner=yellow, user=cyan, host=blue, cwd=dim
+   Usage: theme set solarized
+
+7. matrix
+   Name: Matrix
+   Description: All green — Matrix rain vibe
+   Colors: banner=bright_green, user=bright_green, host=green, cwd=green, symbol=bright_green, git=bright_green
+   Usage: theme set matrix
+
+8. ocean
+   Name: Ocean
+   Description: Deep blues/cyans — ocean
+   Colors: banner=bright_blue, user=bright_cyan, host=bright_blue, cwd=cyan
+   Usage: theme set ocean
+
+9. sunset
+   Name: Sunset
+   Description: Warm oranges — sunset
+   Colors: banner=bright_yellow, user=bright_yellow, host=bright_red, cwd=yellow, git=bright_magenta
+   Usage: theme set sunset
+
+10. neon
+    Name: Neon
+    Description: High contrast — neon pink/cyan
+    Colors: banner=bright_magenta, user=bright_cyan, host=bright_magenta, cwd=bright_white
+    Usage: theme set neon
+
+11. p10k
+    Name: Powerlevel10k
+    Description: p10k classic — powerline , git, icons (requires Nerd Font)
+    Colors: banner=bright_cyan, user=bright_white, host=bright_white, cwd=bright_white, symbol=bright_green
+    Style: classic (bg powerline)
+    Segments:
+      os: bg=bg_bright_black fg=bright_white icon= ( on Linux,  on Windows,  on macOS)
+      context: bg=bg_bright_black fg=bright_yellow icon=  text=user@host
+      dir: bg=bg_bright_blue fg=bright_white icon=  text=~/repo (truncated)
+      vcs: bg=bg_bright_green fg=black icon=  text=branch ● ⇡
+      status: bg=bg_bright_black fg=bright_red text=✘ 1
+    Prompt: [os][context][dir][vcs] ❯ (success green, error red)
+    Usage: theme set p10k | p10k configure | theme preview p10k
+
+12. p10k_lean
+    Name: Powerlevel10k Lean
+    Description: p10k lean — no powerline bg, 8-color, fast
+    Colors: banner=cyan, user=cyan, host=cyan, cwd=bright_blue
+    Style: lean (no bg, thin )
+    Segments: os fg=bright_black, context fg=yellow, dir fg=bright_blue icon=, vcs fg=green icon=
+    Prompt: user@host  ~/repo   main ❯  (lean, fallback if no Nerd Font)
+    Usage: theme set p10k_lean
+
+13. p10k_rainbow
+    Name: Powerlevel10k Rainbow
+    Description: p10k rainbow — colorful powerline per segment
+    Colors: banner=bright_magenta, user=bright_yellow, host=bright_cyan, cwd=bright_white
+    Style: rainbow
+    Segments:
+      os: bg=bg_bright_magenta fg=bright_white icon=
+      context: bg=bg_bright_yellow fg=black icon=
+      dir: bg=bg_bright_cyan fg=black icon=
+      vcs: bg=bg_bright_green fg=black icon=
+    Prompt: colorful  per segment
+    Usage: theme set p10k_rainbow
+
+Custom Colors (appearance.custom_colors):
+  Example: "custom_colors": {"user":"bright_magenta", "banner":"cyan", "host":"bright_yellow"}
+  Valid keys: banner, user, host, cwd, symbol, git, error, success
+  Valid colors: reset, bold, dim, black, red, green, yellow, blue, magenta, cyan, white, bright_*, bg_*, bg_bright_*
+  Legacy: appearance.banner_color overrides theme banner if set and no custom banner
+  Example: theme set dracula + custom_colors {"user":"bright_cyan"} → dracula with cyan user
+
+Related:
+  Prompt / Format presets: 10 at pyshell.py:381 FORMAT_PRESETS — classic, pure, minimal, two-line, git, nerd, compact, full, p10k, powerline
+  Use: format list | format set <name> | prompt set <name> | theme preview <name>
+  Config: pyshell_config.json prompt.format + prompt.preset + prompt.git_branch
+  Powerlevel10k wizard: p10k configure | theme configure | powerlevel10k configure
+
+Generated: 2026-09-14
+Source: pyshell.py:93 THEMES + pyshell.py:70 COLOR_MAP
+Help: pyshell_help.html + help command (CMD_LIST)

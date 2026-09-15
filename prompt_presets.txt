@@ -1,0 +1,114 @@
+PyShell — Prompt / Format Presets
+================================
+File: pyshell.py:381 FORMAT_PRESETS (10 presets)
+Config: pyshell_config.json:2 prompt.format + prompt.preset + prompt.git_branch
+Commands: prompt list | prompt preview <name> | prompt set <name> | prompt set "<custom format>"
+Aliases: format list | format set <name> | pyshell prompt set <name> | pyshell format set <name>
+Placeholders: {user} {host} {cwd} {git} {p10k}   ({p10k} triggers powerlevel10k rendering when theme is p10k*)
+
+1. classic
+   Name: Classic
+   Description: Classic — user@host cwd $>
+   Format: "{user}@{host} {cwd} $> "
+   git_branch: false
+   Example: youss_tucisow@LATITUDE-5400 ~/repo $>
+   Usage: prompt set classic | format set classic | pyshell prompt set classic
+
+2. pure
+   Name: Pure
+   Description: Pure — minimal cwd ❯ (like pure)
+   Format: "{cwd} ❯ "
+   git_branch: false
+   Example: ~/repo ❯
+   Usage: prompt set pure
+
+3. minimal
+   Name: Minimal
+   Description: Minimal — just $>
+   Format: "$> "
+   git_branch: false
+   Example: $>
+   Usage: prompt set minimal
+
+4. two-line
+   Name: Two-line
+   Description: Two-line — user@host cwd on first line, ❯ on second
+   Format: "{user}@{host} {cwd}\n❯ "
+   git_branch: false
+   Example:
+     youss_tucisow@LATITUDE-5400 ~/repo
+     ❯
+   Usage: prompt set two-line
+
+5. git
+   Name: Git
+   Description: Git — classic + branch {git}
+   Format: "{user}@{host} {cwd} {git} $> "
+   git_branch: true
+   Example: youss_tucisow@LATITUDE-5400 ~/repo (main) $>
+   Usage: prompt set git
+
+6. nerd
+   Name: Nerd
+   Description: Nerd — with icons and ❯, git branch
+   Format: "{user}@{host} {cwd} {git} ❯ "
+   git_branch: true
+   Example: youss_tucisow@LATITUDE-5400 ~/repo (main) ❯
+   Usage: prompt set nerd
+
+7. compact
+   Name: Compact
+   Description: Compact — cwd with git, $>
+   Format: "{cwd} {git}$> "
+   git_branch: true
+   Example: ~/repo (main)$>
+   Usage: prompt set compact
+
+8. full
+   Name: Full
+   Description: Full — [user@host] cwd git on first line
+   Format: "[{user}@{host}] {cwd} {git}\n$> "
+   git_branch: true
+   Example:
+     [youss_tucisow@LATITUDE-5400] ~/repo (main)
+     $>
+   Usage: prompt set full
+
+9. p10k
+   Name: Powerlevel10k
+   Description: p10k — powerline prompt (use p10k theme)
+   Format: "{p10k}"
+   git_branch: false
+   Example:  p10k  (powerline, requires p10k theme: theme set p10k)
+   Prompt is rendered via _render_p10k_prompt() with segments: os /, context , dir , vcs , status ✘/❯
+   Usage: prompt set p10k  (then theme set p10k)
+
+10. powerline
+    Name: Powerline
+    Description: Powerline — user@host  cwd  git — fallback if no Nerd Font
+    Format: "{user}  {cwd}  {git} ❯ "
+    git_branch: true
+    Example: youss_tucisow  ~/repo  (main) ❯
+    Usage: prompt set powerline
+
+Custom:
+  Format: any string with placeholders
+  Example: prompt set "{user}@{host} {cwd} $> "
+  Stored as: prompt.preset = "custom", prompt.format = "<custom string>"
+  git_branch is auto-detected via "{git}" in format
+
+Related:
+  Themes: 13 presets in pyshell.py:93 THEMES — dark, light, dracula, nord, monokai, solarized, matrix, ocean, sunset, neon, p10k, p10k_lean, p10k_rainbow
+  Use: theme list | theme set <name> | theme preview <name> | p10k configure
+  Prompt + Theme combo: e.g., theme set p10k + prompt set p10k for full powerlevel10k
+
+Config file: pyshell_config.json
+  "prompt": {
+    "format": "{user}@{host} {cwd} $> ",
+    "preset": "classic",
+    "color": true,
+    "git_branch": false
+  }
+
+Generated: 2026-09-14
+Source: pyshell.py:381 FORMAT_PRESETS

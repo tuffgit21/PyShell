@@ -1,0 +1,61 @@
+{
+  "prompt": {
+    "format": "{user}@{host} {cwd} $> ",
+    "preset": "classic",
+    "color": true,
+    "git_branch": false,
+    "time": false,
+    "custom_formats": {
+      "lab": {
+        "name": "lab",
+        "description": "Custom \u2014 [user@host] cwd git \u276f for testing",
+        "format": "[{user}@{host}] {cwd} {git} \u276f ",
+        "git_branch": true
+      },
+      "time_custom": {
+        "name": "Time Custom",
+        "description": "Custom \u00e2\u20ac\u201d {user}@{host} {current_time} {cwd} $ >",
+        "format": "{user}@{host} {current_time} {cwd} $ > ",
+        "git_branch": false
+      }
+    }
+  },
+  "history": {
+    "file": "~/.pyshell_history",
+    "max_lines": 500,
+    "save_on_exit": true
+  },
+  "behavior": {
+    "clear_on_start": false,
+    "confirm_exit": false,
+    "expand_tilde": true
+  },
+  "aliases": {
+    "ll": "ls",
+    "la": "ls -a",
+    "hist": "history"
+  },
+  "appearance": {
+    "banner": true,
+    "banner_color": "bright_cyan",
+    "theme": "dark",
+    "custom_colors": {},
+    "custom_themes": {
+      "lab_test": {
+        "name": "Lab Test",
+        "description": "Custom \u2014 test theme neon/sunset mix",
+        "banner": "bright_magenta",
+        "user": "bright_cyan",
+        "host": "bright_yellow",
+        "cwd": "bright_white",
+        "symbol": "bright_green",
+        "git": "bright_cyan",
+        "error": "bright_red",
+        "success": "bright_green"
+      }
+    }
+  },
+  "startup": {
+    "commands": []
+  }
+}
