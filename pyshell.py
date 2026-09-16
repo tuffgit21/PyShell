@@ -696,7 +696,82 @@ NON_EMPTY_FIELDS: dict[str, list[str]] = {
 }
 
 def get_config_path() -> Path:
+    # On Linux, config lives in /home/$USER/.pyshell/pyshell-docs/pyshell_config.json (only inside pyshell-docs)
+    if os.name != "nt" and platform.system() != "Windows":
+        try:
+            home = Path.home()
+            docs_path = home / ".pyshell" / "pyshell-docs" / "pyshell_config.json"
+            # Only inside pyshell-docs — always return docs_path on Linux
+            if docs_path.exists() or docs_path.parent.exists() or home.exists() or (home / ".pyshell").exists():
+                return docs_path
+            return docs_path
+        except Exception:
+            pass
     return Path(__file__).parent / "pyshell_config.json"
+
+
+def _ensure_linux_pyshell_dir() -> None:
+    """On Linux, ensure /home/$USER/.pyshell exists and copy docs/config."""
+    if os.name == "nt" or platform.system() == "Windows":
+        return
+    try:
+        home = Path.home()
+        if not str(home) or not home.exists():
+            try:
+                home = Path(f"/home/{username}")
+            except Exception:
+                home = Path("/home") / username if username else Path("/home")
+        pyshell_dir = home / ".pyshell"
+        pyshell_docs_dir = pyshell_dir / "pyshell-docs"
+        # Only inside pyshell-docs — ensure ~/.pyshell/pyshell-docs exists
+        try:
+            pyshell_docs_dir.mkdir(parents=True, exist_ok=True)
+        except Exception:
+            try:
+                pyshell_dir.mkdir(parents=True, exist_ok=True)
+                pyshell_docs_dir.mkdir(parents=True, exist_ok=True)
+            except Exception:
+                pass
+        src_dir = Path(__file__).parent
+        alt_dirs = [
+            src_dir,
+            Path("/usr/share/pyshell-docs"),
+            Path("/usr/share/pyshell"),
+            src_dir / "pyshell-docs",
+        ]
+        files = [
+            "pyshell_config.json",
+            "prompt_presets.txt",
+            "custom_themes.txt",
+            "themes.txt",
+            "README.md",
+        ]
+        for fname in files:
+            src = None
+            for d in alt_dirs:
+                cand = d / fname
+                if cand.exists():
+                    src = cand
+                    break
+            if src is None:
+                src = src_dir / fname
+                if not src.exists():
+                    continue
+            # Only inside pyshell-docs — copy exclusively to ~/.pyshell/pyshell-docs/
+            dst = pyshell_docs_dir / fname
+            try:
+                # Don't overwrite existing user config
+                if fname == "pyshell_config.json" and dst.exists():
+                    continue
+                shutil.copy2(src, dst)
+            except Exception:
+                try:
+                    dst.write_bytes(src.read_bytes())
+                except Exception:
+                    pass
+    except Exception:
+        pass
+
 
 def _is_empty_value(v) -> bool:
     if v is None:
@@ -3707,6 +3782,8 @@ def _run_script_file(path: Path):
 
 def main():
     global PYSHELL_CONFIG, HISTORY_FILE
+    # On Linux, ensure /home/$USER/.pyshell exists and copy docs/config there
+    _ensure_linux_pyshell_dir()
     # --- load & validate pyshell_config.json (warns if missing/invalid/empty) ---
     # For --version/--help we still validate but don't block on prompt if non-interactive
     PYSHELL_CONFIG = load_pyshell_config(interactive=True)
