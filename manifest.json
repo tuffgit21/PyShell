@@ -1,0 +1,62 @@
+{
+  "name": "PyShell — Bash-like shell in Python",
+  "short_name": "PyShell",
+  "description": "A fast, Python-powered shell that feels like Bash — native on Windows and Linux. Lightweight with pipes, redirections, history and built-ins.",
+  "id": "./index.html",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "orientation": "any",
+  "background_color": "#0f0f0f",
+  "theme_color": "#2ecc71",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["developer", "utilities", "productivity"],
+  "icons": [
+    {
+      "src": "./favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./favicon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Screenshots",
+      "short_name": "Screens",
+      "description": "View screenshots",
+      "url": "./index.html#screenshots",
+      "icons": [{ "src": "./favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Help — Commands",
+      "short_name": "Help",
+      "description": "Browse 24 built-in commands",
+      "url": "./pyshell_help.html",
+      "icons": [{ "src": "./favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Download",
+      "short_name": "Download",
+      "description": "Download PyShell",
+      "url": "./index.html#download",
+      "icons": [{ "src": "./favicon.svg", "sizes": "any" }]
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false,
+  "launch_handler": { "client_mode": "navigate-existing" }
+}
