@@ -1,5 +1,5 @@
 /* PyShell — Service Worker for PWA install on Android */
-const CACHE_VERSION = 'pyshell-v1';
+const CACHE_VERSION = 'pyshell-v2';
 const CORE_CACHE = CACHE_VERSION + '-core';
 const RUNTIME_CACHE = CACHE_VERSION + '-runtime';
 
@@ -11,6 +11,8 @@ const CORE_ASSETS = [
   './script.js',
   './manifest.json',
   './favicon.svg',
+  './icon-192.png',
+  './icon-512.png',
   './screenshots/screenshot-1.png',
   './screenshots/screenshot-2.png',
   './screenshots/screenshot-3.png'
